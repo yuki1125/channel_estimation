@@ -38,7 +38,7 @@ void Get_LED_pattern(Mat& LED_pattern) {	//LEDの既知の点滅パターンを�
 	}
 }
 
-void Get_channel_estimation(Mat& GaussEffect_with_offset) { 
+void Get_channel_(Mat& GaussEffect_with_offset) { 
 	//撮影画像のオフセット成分含めたチャネル推定
 	//シミュレーションの場合、オフセットは特に考慮しなくてよい
 	Get_LED_pattern(LED_pattern); //LED点滅パターン (LED数、撮影画像枚数)の行列
