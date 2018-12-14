@@ -41,7 +41,7 @@ void Get_LED_pattern(Mat& LED_pattern) {	//LEDの既知の点滅パターンを�
 void Get_channel_matrix(Mat& GaussEffect_with_offset) { 
 	//撮影画像のオフセット成分含めたチャネル推定
 	//シミュレーションの場合、オフセットは特に考慮しなくてよい
-	Get_LED_pattern(LED_pattern); //LED点滅パターン (LED数、撮影画像枚数)の行列
+	Get_LED_pattern(LED_pattern); //LED点滅パターン (撮影画像枚数(=LOOP_TIMES), LED数)の行列
 	Get_Lum_value(Lum_value); //撮影画像の画素値 (画素数, 撮影画像枚数)の行列
 	invLED_pattern = LED_pattern.inv(DECOMP_SVD); //点滅パターンの擬似逆行列
 	for (int i = 0; i < NUMLED; i++) { 
