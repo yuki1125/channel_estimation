@@ -30,7 +30,7 @@ void Get_LED_pattern(Mat& LED_pattern) {	//LEDの既知の点滅パターンを�
 		*ンを保存しておき、それを読み込ませてもよい.
 		*************************************************************************/
 		
-		for (int j = 0; j < NUMLED + 1; j++) {
+		for (int j = 0; j < NUMLED+1; j++) {
 			if (j == 16) LED_pattern.at<double>(loop, j) = 1; //オフセット
 			else LED_pattern.at<double>(loop, j) = led_pattern[j]; //既知のLEDの点滅パターンを格納
 		}
@@ -46,11 +46,11 @@ void Get_channel_matrix(Mat& GaussEffect_with_offset) {
 	invLED_pattern = LED_pattern.inv(DECOMP_SVD); //点滅パターンの擬似逆行列
 	for (int i = 0; i < NUMLED; i++) { 
 		for (int j = 0; j < TOTAL_PATTERN; j++) {	//TOTAL_PATTERN: 撮影画像枚数 == LOOP_TIMES
-			Lum_value02(j,0) = Lum_value(i, j);
+			Lum_value02(j, 0) = Lum_value(i, j);
 		}
 		Channel_est = invLED_pattern * Lum_value02; //画素値と既知の点滅パターンからチャネル推定
 		for (int j = 0; j < NUMLED+1; j++) {
-			GaussEffect_with_offset.at<double>(i,j) = Channel_est(j, 0);
+			GaussEffect_with_offset.at<double>(i, j) = Channel_est(j, 0);
 		}
 	}
 }
